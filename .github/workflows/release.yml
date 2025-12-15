@@ -36,14 +36,14 @@ jobs:
       - name: Run acceptance tests
         run: |
           inv atest
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         if: ${{ always() }}
         with:
           name: Test_results_${{ matrix.python-version }}
           path: atest/output
       - name: Python Semantic Release
         id: release
-        uses: python-semantic-release/python-semantic-release@v10.5.2
+        uses: python-semantic-release/python-semantic-release@v10.5.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build package
